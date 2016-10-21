@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     modernizr = require('gulp-modernizr'),
+    twig = require('gulp-twig'),
     sync = require('browser-sync').create();
 
 var processors = [
@@ -23,6 +24,7 @@ gulp.task('sync', ['scss'], function() {
   })
 
   gulp.watch("app/scss/**/*.scss", ['scss']);
+  gulp.watch("app/twig/**/*.twig", ['twig']);
 });
 
 gulp.task('modernizr', function() {
@@ -31,6 +33,16 @@ gulp.task('modernizr', function() {
       .pipe(gulp.dest("build/"))
 });
 
-gulp.task('default', ['sync'], function() {
+gulp.task('twig', function () {
+  gulp.src('./app/twig/*.twig')
+      .pipe(twig({
+        data: {
+          title: 'Yummy & Guiltfree',
+        }
+      }))
+      .pipe(gulp.dest('./app'));
+});
+
+gulp.task('default', ['sync', 'twig'], function() {
 
 });
