@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
+    modernizr = require('gulp-modernizr'),
     sync = require('browser-sync').create();
 
 var processors = [
@@ -22,6 +23,12 @@ gulp.task('sync', ['scss'], function() {
   })
 
   gulp.watch("app/scss/**/*.scss", ['scss']);
+});
+
+gulp.task('modernizr', function() {
+  gulp.src('.app/js/*.js')
+      .pipe(modernizr())
+      .pipe(gulp.dest("build/"))
 });
 
 gulp.task('default', ['sync'], function() {
