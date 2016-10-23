@@ -11,10 +11,10 @@ var processors = [
 ];
 
 gulp.task('scss', function() {
-  return gulp.src('app/scss/style.scss')
+  return gulp.src('./app/scss/main.scss')
         .pipe(sass())
         .pipe(postcss(processors))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('./app/css'))
         .pipe(sync.stream());
 });
 
@@ -23,12 +23,12 @@ gulp.task('sync', ['scss'], function() {
       server: './app'
   })
 
-  gulp.watch("app/scss/**/*.scss", ['scss']);
-  gulp.watch("app/twig/**/*.twig", ['twig']);
+  gulp.watch("./app/scss/**/*.scss", ['scss']);
+  gulp.watch("./app/twig/**/*.twig", ['twig']);
 });
 
 gulp.task('modernizr', function() {
-  gulp.src('.app/js/*.js')
+  gulp.src('./app/js/*.js')
       .pipe(modernizr())
       .pipe(gulp.dest("build/"))
 });
