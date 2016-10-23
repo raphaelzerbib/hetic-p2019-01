@@ -14,11 +14,7 @@ gulp.task('scss', function() {
   return gulp.src('./app/scss/main.scss')
         .pipe(sass())
         .pipe(postcss(processors))
-<<<<<<< HEAD
-        .pipe(gulp.dest('app/css'))
-=======
         .pipe(gulp.dest('./app/css'))
->>>>>>> 1b25b240b28a601273ad071e04615f731c016742
         .pipe(sync.stream());
 });
 
