@@ -1,17 +1,34 @@
+body{
+  background-color: #facabb;
+  font-family: Abrade Book;
+}
+
 .__container{
   width: 100vw;
   height: 100vh;
   background: $body;
   background-image: linear-gradient(-13deg,#fbdcd2 60%,#facabb 20%);
+  padding-top: 170px;
+  text-align: center;
 }
 
-.container__title{
+.__container__img{
+  width: 80%;
+  margin-left: 10%;
+}
+
+.__container__img img{
+  width:100%;
+  height: auto;
+}
+
+.__container__title{
   width: 60%;
   text-align: center;
   margin-left: 20%;
 }
 
-.container__title h1{
+.__container__title h1{
   color: white;
   font-weight: bold;
   font-size: 20px;
