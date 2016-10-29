@@ -10,6 +10,7 @@
 
 
 .__menu__item {
+    width: 100%;
     padding: 20px 0;
     .__menu__item__title {
         font-size: 20px;
@@ -18,9 +19,20 @@
     }
 
     .__menu__item__content {
+        position: relative;
         height: 0;
         padding: 0;
         overflow: hidden;
+
+        p {
+            font-weight: bold;
+        }
+
+    }
+
+    .__menu__item_info {
+        color: $orange;
+        font-size: 20px;
     }
 }
 
@@ -33,7 +45,72 @@
     }
 
     .__menu__item__content {
-        height: 100px;
+        height: 120px;
         padding-top: 20px;
+
+        &.contact {
+            height: 200px;
+        }
+    }
+}
+
+.__menu__item__content {
+    &.produits {
+        p {
+            color: $black;
+            font-size: 40px;
+        }
+        img {
+            position: absolute;
+            top: 20px;
+            margin-left: -50px;
+        }
+    }
+
+    &.valeurs {
+        color: white;
+        font-size: 40px;
+
+        b {
+            color: $black;
+        }
+    }
+
+    &.histoire {
+        img {
+            height: 80px;
+        }
+    }
+
+    &.contact {
+        color: white;
+        font-size: 24px;
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 18px;
+
+            b {
+                color: $blue; 
+            }
+
+            small {
+                font-weight: normal;
+            }
+        }
+
+        hr {
+            color: white;
+            background-color: white;
+            border: 0;
+            width: 20%;
+            opacity: 0.5;
+            height: 2px;
+            margin-left: 40%;
+        }
     }
 }

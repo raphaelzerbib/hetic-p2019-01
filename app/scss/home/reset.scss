@@ -1,11 +1,11 @@
 .__home {
-    background-color: $orange;
+    background-color: $peach;
 }
 
 .__home__container {
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(-13deg, $orange 50%, $darkOrange 50%);
+    background-image: linear-gradient(-13deg, $peach 50%, $darkPeach 50%);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@
 
     h1 {
         color: white;
-        font-weight: black;
+        font-weight: bold;
         font-size: 20px;
     }
 
