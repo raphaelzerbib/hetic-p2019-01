@@ -1,8 +1,15 @@
 @mixin font-face($font-family, $file-path, $font-weight, $font-style) {
-    @font-face{
+    @font-face {
         font-family: $font-family;
         src: url("../fonts/#{$file-path}.otf");
         font-weight: $font-weight;
         font-style: $font-style;
     }
+}
+
+@mixin transition($property, $duration, $timing-function, $delay) {
+    -webkit-transition: $property $duration $timing-function $delay;
+    -moz-transition: $property $duration $timing-function $delay;
+    -o-transition: $property $duration $timing-function $delay;
+    -ms-transition: $property $duration $timing-function $delay;
 }
