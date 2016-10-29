@@ -1,41 +1,44 @@
-body{
+body {
   background-color: #facabb;
-  font-family: Abrade Book;
+  font-family: Abrade;
 }
 
-.__container{
-  width: 100vw;
-  height: 100vh;
-  background: $body;
-  background-image: linear-gradient(-13deg,#fbdcd2 50%,#facabb 50%);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.__home__container {
+    width: 100vw;
+    height: 100vh;
+    background: $body;
+    background-image: linear-gradient(-13deg,#fbdcd2 50%,#facabb 50%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.__container__img{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.__home__container__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    img {
+        max-width: 70%;
+    }
 }
 
-.__container__img img{
-  max-width: 70%;
-}
+.__home__container__bottom {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    display: block;
 
-.__container__title{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
+    h1 {
+        color: white;
+        font-weight: black;
+        font-size: 20px;
+    }
 
-.__container__title h1{
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
+    img {
+        width: 25px;
+        margin: 15px 0;
+    }
 }
