@@ -1,0 +1,39 @@
+.__menu {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.__menu__item {
+    padding: 20px 0;
+    .__menu__item__title {
+        font-size: 20px;
+        color:white;
+        opacity: 0.5;
+    }
+
+    .__menu__item__content {
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+}
+
+
+.__menu__item.active {
+    .__menu__item__title {
+        font-size: 24px;
+        color: $black;
+        opacity: 1;
+    }
+
+    .__menu__item__content {
+        height: 100px;
+        padding-top: 20px;
+    }
+}

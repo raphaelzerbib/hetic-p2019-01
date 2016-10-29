@@ -1,13 +1,11 @@
-body {
-  background-color: #facabb;
-  font-family: Abrade;
+.__home {
+    background-color: $orange;
 }
 
 .__home__container {
     width: 100vw;
     height: 100vh;
-    background: $body;
-    background-image: linear-gradient(-13deg,#fbdcd2 50%,#facabb 50%);
+    background-image: linear-gradient(-13deg, $orange 50%, $darkOrange 50%);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -41,4 +39,9 @@ body {
         width: 25px;
         margin: 15px 0;
     }
+}
+
+.__home__menu {
+    width: 100vw;
+    height: 100vh;
 }
