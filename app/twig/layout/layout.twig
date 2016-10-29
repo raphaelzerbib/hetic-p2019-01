@@ -9,10 +9,14 @@
     <title>{{ title }}</title>
 
     <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">
+
+    <script async scr="js/menu.js"></script>
+
+    {% block head %}{% endblock %}
+    
   </head>
-  <body>
+  <body class="{% block body_class %}{% endblock %}">
     {% include '../nav/nav.twig' %}
     {% block body %}{% endblock %}
   </body>
-
 </html>
