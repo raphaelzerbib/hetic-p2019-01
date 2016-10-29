@@ -1,4 +1,38 @@
-@font-face {
-    font-family: Abrade Book;
-    src: url("../fonts/Abrade Book.otf");
-}
+/*
+    ABRADE FONT
+*/
+@include font-face(Abrade, abrade-black, black, normal);
+@include font-face(Abrade, abrade-black-italic, black, italic);
+
+@include font-face(Abrade, abrade-bold, bold, normal);
+@include font-face(Abrade, abrade-bold-italic, bold, italic);
+
+@include font-face(Abrade, abrade-book, book, normal);
+@include font-face(Abrade, abrade-book-italic, book, italic);
+
+@include font-face(Abrade, abrade-extra-light, extra-light, normal);
+@include font-face(Abrade, abrade-extra-light-italic, extra-light, italic);
+
+@include font-face(Abrade, abrade-extra-thin, extra-thin, normal);
+@include font-face(Abrade, abrade-extra-thin-italic, extra-thin, italic);
+
+@include font-face(Abrade, abrade-hairline, hairline, normal);
+@include font-face(Abrade, abrade-hairline-italic, hairline, italic);
+
+@include font-face(Abrade, abrade-heavy, heavy, normal);
+@include font-face(Abrade, abrade-heavy-italic, heavy, italic);
+
+@include font-face(Abrade, abrade-light, light, normal);
+@include font-face(Abrade, abrade-light-italic, light, italic);
+
+@include font-face(Abrade, abrade-medium, medium, normal);
+@include font-face(Abrade, abrade-medium-italic, medium, italic);
+
+@include font-face(Abrade, abrade-normal, normal, normal);
+@include font-face(Abrade, abrade-normal-italic, normal, italic);
+
+@include font-face(Abrade, abrade-thin, thin, normal);
+@include font-face(Abrade, abrade-thin-italic, thin, italic);
+
+@include font-face(Abrade, abrade-ultra, ultra, normal);
+@include font-face(Abrade, abrade-ultra-italic, ultra, italic);
