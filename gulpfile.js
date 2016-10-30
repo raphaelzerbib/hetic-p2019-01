@@ -3,6 +3,9 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     modernizr = require('gulp-modernizr'),
+    jshint = require('gulp-jshint'),
+    rename = require('gulp-rename'),
+    uglify = require('gulp-uglify'),
     twig = require('gulp-twig'),
     sync = require('browser-sync').create();
 
@@ -14,23 +17,37 @@ gulp.task('scss', function() {
   return gulp.src('./app/scss/main.scss')
         .pipe(sass())
         .pipe(postcss(processors))
-        .pipe(gulp.dest('./app/css'))
+        .pipe(gulp.dest('./dist/css'))
         .pipe(sync.stream());
 });
 
 gulp.task('sync', ['scss'], function() {
   sync.init({
-      server: './app'
+      server: './dist'
   })
 
   gulp.watch("./app/scss/**/*.scss", ['scss']);
+  gulp.watch("./app/js/*.js", ['js']);
   gulp.watch("./app/twig/**/*.twig", ['twig']);
+  gulp.watch("./app/img/**/*", ['img']);
+  gulp.watch("./app/fonts/**/*", ['fonts']);
 });
 
-gulp.task('modernizr', function() {
+gulp.task('js', function() {
   gulp.src('./app/js/*.js')
-      .pipe(modernizr())
-      .pipe(gulp.dest("build/"))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('./dist/js'))
+});
+
+gulp.task('img', function() {
+  gulp.src('./app/img/**/*')
+      .pipe(gulp.dest('./dist/img'))
+});
+
+gulp.task('fonts', function() {
+  gulp.src('./app/fonts/**/*')
+      .pipe(gulp.dest('./dist/fonts'))
 });
 
 gulp.task('twig', function () {
@@ -40,9 +57,9 @@ gulp.task('twig', function () {
           title: 'Yummy & Guiltfree',
         }
       }))
-      .pipe(gulp.dest('./app'));
+      .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', ['sync', 'twig'], function() {
+gulp.task('default', ['sync', 'twig', 'img', 'js', 'fonts'], function() {
 
 });

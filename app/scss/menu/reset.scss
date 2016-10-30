@@ -41,7 +41,7 @@
 }
 
 
-.__menu__item.active {
+.__menu__item.__active {
     .__menu__item__title {
         font-size: 24px;
         color: $black;
@@ -52,14 +52,14 @@
         height: 120px;
         padding-top: 20px;
 
-        &.contact {
+        &.__contact {
             height: 200px;
         }
     }
 }
 
 .__menu__item__content {
-    &.produits {
+    &.__produits {
         p {
             color: $black;
             font-size: 40px;
@@ -71,7 +71,7 @@
         }
     }
 
-    &.valeurs {
+    &.__valeurs {
         color: white;
         font-size: 40px;
 
@@ -80,13 +80,13 @@
         }
     }
 
-    &.histoire {
+    &.__histoire {
         img {
             height: 80px;
         }
     }
 
-    &.contact {
+    &.__contact {
         color: white;
         font-size: 24px;
 
