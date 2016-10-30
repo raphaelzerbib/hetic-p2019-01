@@ -1,15 +1,11 @@
 $(document).ready(function() {
-
-    var scrollViewManager = new ScrollViewManager();
-    scrollViewManager.parent = $("body");
-    scrollViewManager.addButton($(".__home__container__bottom"), 1);
-    scrollViewManager.init();
-
-    /*var scrollMenuManager = new ScrollMenuManager();
-    scrollMenuManager.parent = $(".__home__menu");*/
+    var homeManager = new HomeManager();
+    homeManager.parent = $("body");
+    homeManager.addButton($(".__home__container__bottom"), 1);
+    homeManager.init();
 })
 
-function ScrollViewManager() {
+function HomeManager() {
     var own = this;
     own.view = 0;
 
@@ -21,6 +17,7 @@ function ScrollViewManager() {
     own.startTouchY;
     own.endTouchY;
 
+    own.menuManager = new MenuManager();
 
     own.canChangeView  = function() {
         return own.view*own.height == own.parent.scrollTop();
@@ -48,8 +45,9 @@ function ScrollViewManager() {
     own.initDesktop = function() {
         own.parent.bind('mousewheel', function(e) {
             own.height = $(window).height();
-            if(own.canChangeView()) {
-                var delta = e.originalEvent.wheelDelta;
+            var delta = e.originalEvent.wheelDelta;
+
+            if(own.canChangeView() && Math.abs(delta) > 20) {
                 own.selectView(delta < 0 ? 1 : 0);
             }
 
@@ -80,10 +78,12 @@ function ScrollViewManager() {
 
         $(window).on('touchend', function(e) {
             own.height = $(window).height();
-            console.log(own.startTouchY);
-            console.log(own.endTouchY);
-            if(own.canChangeView()) {
-                var delta = own.endTouchY - own.startTouchY;
+
+            var delta = own.endTouchY - own.startTouchY;
+
+            own.menuManager.running = (own.view == 0) ? false : true;
+
+            if(own.canChangeView() && Math.abs(delta) > 20 && own.menuManager.activeItem == 0) {
                 own.selectView(delta < 0 ? 1 : 0);
             }
 
@@ -95,9 +95,12 @@ function ScrollViewManager() {
 
     }
 
-    own.init = function(desktop, mobile) {
+    own.init = function() {
         own.initDesktop();
         own.initMobile();
+
+        own.menuManager.parent = $(".__home__menu");
+        own.menuManager.init();
     }
 
 
