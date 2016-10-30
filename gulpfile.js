@@ -63,5 +63,6 @@ gulp.task('sync', ['scss', 'js', 'twig', 'img', 'fonts'], function() {
 });
 
 gulp.task('default', ['sync', 'twig', 'img', 'js', 'fonts'], function() {
-
+    gulp.src('./node_modules/jquery/dist/jquery.min.js')
+        .pipe(gulp.dest('./dist/js'))
 });
