@@ -21,23 +21,21 @@ gulp.task('scss', function() {
         .pipe(sync.stream());
 });
 
-gulp.task('sync', ['scss'], function() {
-  sync.init({
-      server: './dist'
-  })
-
-  gulp.watch("./app/scss/**/*.scss", ['scss']);
-  gulp.watch("./app/js/*.js", ['js']);
-  gulp.watch("./app/twig/**/*.twig", ['twig']);
-  gulp.watch("./app/img/**/*", ['img']);
-  gulp.watch("./app/fonts/**/*", ['fonts']);
-});
-
 gulp.task('js', function() {
-  gulp.src('./app/js/*.js')
+  gulp.src('./app/js/**/*.js')
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./dist/js'))
+});
+
+gulp.task('twig', function () {
+  gulp.src('./app/twig/*.twig')
+      .pipe(twig({
+        data: {
+          title: 'Yummy & Guiltfree',
+        }
+      }))
+      .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('img', function() {
@@ -50,14 +48,18 @@ gulp.task('fonts', function() {
       .pipe(gulp.dest('./dist/fonts'))
 });
 
-gulp.task('twig', function () {
-  gulp.src('./app/twig/*.twig')
-      .pipe(twig({
-        data: {
-          title: 'Yummy & Guiltfree',
-        }
-      }))
-      .pipe(gulp.dest('./dist'));
+
+
+gulp.task('sync', ['scss', 'js', 'twig', 'img', 'fonts'], function() {
+  sync.init({
+      server: './dist'
+  })
+
+  gulp.watch("./app/scss/**/*.scss", ['scss']);
+  gulp.watch("./app/js/**/*.js", ['js']);
+  gulp.watch("./app/twig/**/*.twig", ['twig']);
+  gulp.watch("./app/img/**/*", ['img']);
+  gulp.watch("./app/fonts/**/*", ['fonts']);
 });
 
 gulp.task('default', ['sync', 'twig', 'img', 'js', 'fonts'], function() {
