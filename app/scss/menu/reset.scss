@@ -55,6 +55,9 @@
     }
 }
 
+.__menu__item:nth-child(1) {
+    margin-top: -120px;
+}
 
 .__menu__item.__active {
     .__menu__item__title {
