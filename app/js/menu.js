@@ -15,13 +15,13 @@ function MenuManager() {
     }
 
     own.selectItem = function(item) {
-        own.parent.find('.__menu__item').removeClass("__active");
-        item.addClass("__active");
+        own.parent.find('.menu__item').removeClass("active");
+        item.addClass("active");
         own.activeItem = own.parent.find(item).index();
     }
 
     own.initDesktop = function() {
-        own.parent.find('.__menu__item')
+        own.parent.find('.menu__item')
         .mouseover(function() {
             own.selectItem($(this));
         })
@@ -52,7 +52,7 @@ function MenuManager() {
                 var itemId = own.activeItem + position;
 
                 if(own.isExistingItem(itemId)) {
-                    var item = own.parent.find('.__menu__item').eq(itemId);
+                    var item = own.parent.find('.menu__item').eq(itemId);
                     own.selectItem(item);
                 }
 

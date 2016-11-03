@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var homeManager = new HomeManager();
     homeManager.parent = $("body");
-    homeManager.addButton($(".__home__container__bottom"), 1);
+    homeManager.addButton($(".home__container--bottom"), 1);
     homeManager.init();
 })
 
@@ -99,7 +99,7 @@ function HomeManager() {
         own.initDesktop();
         own.initMobile();
 
-        own.menuManager.parent = $(".__home__menu");
+        own.menuManager.parent = $(".home__menu");
         own.menuManager.init();
     }
 

@@ -1,15 +1,15 @@
-.__home {
+.home {
     position: relative;
     height: 200%;
     background-color: $peach;
 }
-.__home__container, .__home__menu {
+.home__container, .home__menu {
     position: relative;
     width: 100%;
     height: 50%;
 }
 
-.__home__container {
+.home__container {
     position: relative;
     width: 100%;
     height: 50%;
@@ -21,7 +21,7 @@
     flex-direction: column;
 }
 
-.__home__container__img {
+.home__container--img {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,14 +31,14 @@
     }
 }
 
-.__home__container__bottom {
+.home__container--bottom {
     position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center;
     display: block;
 
-    h1 {
+    p {
         color: white;
         font-weight: bold;
         font-size: 20px;

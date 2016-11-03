@@ -1,4 +1,4 @@
-.__menu {
+.menu {
     width: 100%;
     height: 100%;
     position: relative;
@@ -9,13 +9,13 @@
     flex-direction: column;
 }
 
-.__menu__links {
+.menu__links {
     position: absolute;
     bottom: 0;
     height: 60px;
     width: 100%;
 
-    .__menu__link {
+    .menu__links--link {
         display: inline-block;
         margin: 0 10px;
     }
@@ -23,10 +23,10 @@
 
 
 
-.__menu__item {
+.menu__item {
     width: 100%;
     padding: 20px 0;
-    .__menu__item__title {
+    .menu__item--title {
         font-size: 20px;
         color:white;
         opacity: 0.5;
@@ -34,7 +34,7 @@
         @include transition(all, 0.5s, ease, 0s);
     }
 
-    .__menu__item__content {
+    .menu__item--content {
         position: relative;
         height: 0;
         padding: 0;
@@ -49,31 +49,31 @@
 
     }
 
-    .__menu__item_info {
+    .menu__item--info {
         color: $orange;
         font-size: 20px;
     }
 }
 
-.__menu__item.__active {
-    .__menu__item__title {
+.menu__item.active {
+    .menu__item--title {
         font-size: 24px;
         color: $black;
         opacity: 1;
     }
 
-    .__menu__item__content {
+    .menu__item--content {
         height: 120px;
         padding-top: 20px;
         opacity: 1;
-        &.__contact {
+        &.contact {
             height: 200px;
         }
     }
 }
 
-.__menu__item__content {
-    &.__produits {
+.menu__item--content {
+    &.produits {
         p {
             color: $black;
             font-size: 40px;
@@ -85,7 +85,7 @@
         }
     }
 
-    &.__valeurs {
+    &.valeurs {
         color: white;
         font-size: 40px;
 
@@ -94,13 +94,13 @@
         }
     }
 
-    &.__histoire {
+    &.histoire {
         img {
             height: 80px;
         }
     }
 
-    &.__contact {
+    &.contact {
         color: white;
         font-size: 24px;
 
