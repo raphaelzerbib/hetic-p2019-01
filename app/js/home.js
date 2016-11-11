@@ -1,54 +1,83 @@
-$(document).ready(function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     var homeManager = new HomeManager();
-    homeManager.parent = $("body");
-    homeManager.addButton($(".home__container--bottom"), 1);
+    homeManager.parent = document.querySelector(".home");
+    homeManager.addButton(document.querySelector(".home__container--bottom"), 1);
     homeManager.init();
 })
 
+
+/**
+ * HomeManager
+ * Gestion des animations, transitions de la page home
+ *
+ */
 function HomeManager() {
-    var own = this;
-    own.view = 0;
+    var self = this;
+    self.view = 0;
 
-    own.parent;
-    own.height;
+    self.parent;
+    self.height;
 
-    own.isChangingView = false;
+    self.startTouchY;
+    self.endTouchY;
 
-    own.startTouchY;
-    own.endTouchY;
+    self.menuManager = new MenuManager();
 
-    own.menuManager = new MenuManager();
-
-    own.canChangeView  = function() {
-        return own.view*own.height == own.parent.scrollTop();
-    }
-
-    own.selectView = function(view) {
-        if(own.view != view && !own.isChangingView) {
-            own.isChangingView = true;
-            own.parent.animate({
-                scrollTop: view*own.height
-            }, 500, function() {
-                own.view = view;
-                own.isChangingView = false;
-            })
+    /**
+     * selecView
+     * rend visible la vue en param
+     *
+     * @param view
+     */
+    self.selectView = function(view) {
+        /*
+         * si view est different de la vue actuellement visible
+         */
+        if(self.view != view) {
+            /*
+             * deplace la position du parent pour que la vue apparaisse dans le viewport
+             */
+            self.parent.style.top = -(view * 100) + '%';
+            self.view = view;
         }
     }
 
-    own.addButton = function(button, view) {
-        button.bind("click", function() {
-            own.height = $(window).height();
-            own.selectView(view);
+    /**
+     * addButton
+     * permet de changer de vue en cliquant
+     * sur le button renseigné en param
+     *
+     * @param button
+     * @param view
+     */
+    self.addButton = function(button, view) {
+        button.addEventListener("click", function() {
+            self.height = window.innerHeight;
+            self.selectView(view);
         })
     }
 
-    own.initDesktop = function() {
-        own.parent.bind('mousewheel', function(e) {
-            own.height = $(window).height();
-            var delta = e.originalEvent.wheelDelta;
-
-            if(own.canChangeView() && Math.abs(delta) > 20) {
-                own.selectView(delta < 0 ? 1 : 0);
+    /**
+     * initDesktop
+     * initialisation de la page home pour la version
+     * la version desktop
+     */
+    self.initDesktop = function() {
+        /**
+         * event listener sur le scroll
+         */
+        self.parent.addEventListener('mousewheel', function(e) {
+            self.height = window.innerHeight;
+            var delta = e.deltaY;
+            /**
+             * si le vecteur position est assez grand
+             */
+            if(Math.abs(delta) > 20) {
+                /**
+                 * on change de vue
+                 */
+                self.selectView(delta > 0 ? 1 : 0);
             }
 
             if(e.preventDefault) { e.preventDefault(); }
@@ -58,17 +87,28 @@ function HomeManager() {
         });
     }
 
-    own.initMobile = function() {
-        $(window).on('touchstart', function(e){
-            own.startTouchY = e.originalEvent.touches[0].clientY
+    /**
+     * initDesktop
+     * initialisation de la page home pour la version
+     * la version mobile
+     */
+    self.initMobile = function() {
+        /*
+         * recupere et stock la position sur Y du premier touch dans startTouchY
+         */
+        window.addEventListener('touchstart', function(e){
+            self.startTouchY = e.touches[0].clientY
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
 
             return false;
         });
 
-        $(window).on('touchmove', function(e){
-            own.endTouchY = e.originalEvent.touches[0].clientY;
+        /*
+         * recupere et stock la position sur Y du dernier touch dans endTouchY
+         */
+        window.addEventListener('touchmove', function(e){
+            self.endTouchY = e.touches[0].clientY;
 
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
@@ -76,15 +116,28 @@ function HomeManager() {
             return false;
         });
 
-        $(window).on('touchend', function(e) {
-            own.height = $(window).height();
+        window.addEventListener('touchend', function(e) {
+            self.height = window.innerHeight;
 
-            var delta = own.endTouchY - own.startTouchY;
+            /*
+             * calcul du vecteur position sur Y
+             */
+            var delta = self.endTouchY - self.startTouchY;
 
-            own.menuManager.running = (own.view == 0) ? false : true;
+            /*
+             * stop les events de menuManager si c'est la vue 0
+             * (la vue 1 correspond au menu)
+             */
+            self.menuManager.running = (self.view == 0) ? false : true;
 
-            if(own.canChangeView() && Math.abs(delta) > 20 && own.menuManager.activeItem == 0) {
-                own.selectView(delta < 0 ? 1 : 0);
+            /*
+             * si le vecteur est assez grand
+             */
+            if(Math.abs(delta) > 20 && self.menuManager.activeItem == 0) {
+                /*
+                 * change de vue
+                 */
+                self.selectView(delta < 0 ? 1 : 0);
             }
 
             if(e.preventDefault) { e.preventDefault(); }
@@ -95,12 +148,12 @@ function HomeManager() {
 
     }
 
-    own.init = function() {
-        own.initDesktop();
-        own.initMobile();
+    self.init = function() {
+        self.initDesktop();
+        self.initMobile();
 
-        own.menuManager.parent = $(".home__menu");
-        own.menuManager.init();
+        self.menuManager.parent = document.querySelector(".home__menu");
+        self.menuManager.init();
     }
 
 
