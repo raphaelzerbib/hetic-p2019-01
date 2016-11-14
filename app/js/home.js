@@ -52,7 +52,9 @@ function HomeManager() {
      * @param view
      */
     self.addButton = function(button, view) {
-        var eventListenerCallback = function() {
+        var eventListenerCallback = function(e) {
+            e.stopPropagation();
+
             self.height = window.innerHeight;
             self.selectView(view);
         }
