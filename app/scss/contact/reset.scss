@@ -16,14 +16,48 @@
     flex-direction: column;
 }
 
-.contact__links
-{
+.contact__links {
     position: absolute;
     bottom: 50px;
     display: flex;
-
+    width: 100%;
 }
 
 .contact__link{
     display: inline-block;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contact__container h1{
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.contact__container article {
+    margin: 100px 0;
+}
+
+.contact__container article p {
+    font-weight: bold;
+    font-size: 47px;
+}
+
+.contact__container .horaires {
+    font-weight: 300;
+    font-size: 31px;
+    color: white;
+}
+
+
+.contact__container__find{
+    width: 80%;
+    height: 35px;
+    background: white;
+    font-weight: 300;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
