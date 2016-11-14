@@ -141,6 +141,27 @@ function ProductsManager() {
         })
     }
 
+    self.detectGesture = function(delta) {
+        /**
+         * si le vecteur position est assez grand
+         */
+        if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
+            if(self.view == 0) {
+                /**
+                 * on change d'item
+                 */
+                var item = self.item + (delta.x > 0 ? +1 : -1);
+                self.selectItem(item);
+            }
+        }
+        else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
+            /**
+             * on change de vue
+             */
+            self.selectView(delta.y > 0 ? 1 : 0);
+        }
+    }
+
     /**
      * initDesktop
      * initialisation de la page home pour la version
@@ -152,24 +173,8 @@ function ProductsManager() {
          */
         window.addEventListener('mousewheel', function(e) {
             var delta = {x: e.deltaX, y: e.deltaY};
-            /**
-             * si le vecteur position est assez grand
-             */
-            if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
-                if(self.view == 0) {
-                    /**
-                     * on change d'item
-                     */
-                    var item = self.item + (delta.x > 0 ? +1 : -1);
-                    self.selectItem(item);
-                }
-            }
-            else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
-                /**
-                 * on change de vue
-                 */
-                self.selectView(delta.y > 0 ? 1 : 0);
-            }
+
+            self.detectGesture(delta);
 
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
@@ -212,24 +217,9 @@ function ProductsManager() {
             /*
              * calcul du vecteur position sur Y
              */
-            var delta = {x: self.endTouch.x - self.startTouch.x, y: self.endTouch.y - self.endTouch.y};
+            var delta = {x: self.startTouch.x - self.endTouch.x, y: self.startTouch.y - self.endTouch.y};
 
-
-            if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
-                if(self.view == 0) {
-                    /**
-                     * on change d'item
-                     */
-                    var item = self.item + delta.x > 0 ? +1 : -1;
-                    self.selectItem(item);
-                }
-            }
-            else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
-                /**
-                 * on change de vue
-                 */
-                self.selectItem(delta.y > 0 ? 1 : 0);
-            }
+            self.detectGesture(delta);
 
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
