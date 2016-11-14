@@ -118,7 +118,6 @@ function ProductsManager() {
      * @param filter
      */
     self.filterItems = function(filter) {
-        console.log(self.itemsParent);
         self.itemsParent.classList.remove("sugarFilter");
         self.itemsParent.classList.remove("saltFilter");
         self.itemsParent.classList.add(filter+"Filter");
@@ -136,10 +135,13 @@ function ProductsManager() {
      * @param filter
      */
     self.addButtonFilter = function(button, filter, callback) {
-        button.addEventListener("click", function() {
+        var eventListenerCallback = function() {
             self.filterItems(filter);
             callback();
-        })
+        };
+
+        button.addEventListener("click", eventListenerCallback);
+        button.addEventListener("touchstart", eventListenerCallback);
     }
 
     /**
@@ -152,21 +154,23 @@ function ProductsManager() {
      * @param id
      */
     self.addButtonSelect = function(button, isView, id) {
-        button.addEventListener("click", function() {
+        var eventListenerCallback = function() {
             if(isView) {
                 self.selectView(id);
             }
             else {
                 self.selectItem(id);
             }
-        })
+        };
+        button.addEventListener("click", eventListenerCallback);
+        button.addEventListener("touchstart", eventListenerCallback);
     }
 
     self.detectGesture = function(delta) {
         /**
          * si le vecteur position est assez grand
          */
-        if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
+        if(Math.abs(delta.x) > 50 && Math.abs(delta.x) > Math.abs(delta.y)) {
             if(self.view == 0) {
                 /**
                  * on change d'item
@@ -175,7 +179,7 @@ function ProductsManager() {
                 self.selectItem(item);
             }
         }
-        else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
+        else if(Math.abs(delta.y) > 50 && Math.abs(delta.y) > Math.abs(delta.x)) {
             /**
              * on change de vue
              */
@@ -239,7 +243,7 @@ function ProductsManager() {
              * calcul du vecteur position sur Y
              */
             var delta = {x: self.startTouch.x - self.endTouch.x, y: self.startTouch.y - self.endTouch.y};
-
+            
             self.detectGesture(delta);
 
             if(e.preventDefault) { e.preventDefault(); }
