@@ -3,6 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     productsManager.itemsParent = document.querySelector(".produits__itemsContainer");
     productsManager.viewsParent = document.querySelector(".produits");
     productsManager.addButtonSelect(document.querySelector(".produits__button"), true, 1);
+    productsManager.addButtonFilter(document.querySelector(".produits__filter.salt"), "salt", function() {
+        var filters = document.querySelectorAll(".produits__filter");
+        [].forEach.call(filters, function(filter) {
+            filter.style.color = "white";
+        });
+        document.querySelector(".produits__filter.salt").style.color = "#5B3E26";
+    })
+    productsManager.addButtonFilter(document.querySelector(".produits__filter.sugar"), "sugar", function() {
+        var filters = document.querySelectorAll(".produits__filter");
+        [].forEach.call(filters, function(filter) {
+            filter.style.color = "white";
+        });
+        document.querySelector(".produits__filter.sugar").style.color = "#5B3E26";
+    })
+
     productsManager.init();
 })
 
@@ -60,10 +75,14 @@ function ProductsManager() {
          */
         if(self.item != item && item < itemsData.length && item >= 0 && !self.itemsIsAnimate) {
             self.itemsIsAnimate = true;
+            var itemData = itemsData[item];
             /*
              * deplace la position du parent pour que la vue apparaisse dans le viewport
              */
             self.itemsParent.style.left = -(item * 100) + '%';
+            self.viewsParent.querySelector(".produits__container").style.backgroundImage = 'linear-gradient(-13deg, '+itemData.colorDark+' 50%, '+itemData.color+' 50%)';
+            self.viewsParent.style.backgroundColor = itemData.colorDark;
+            console.log('ok');
             self.item = item;
 
             setTimeout(function() {
@@ -99,9 +118,10 @@ function ProductsManager() {
      * @param filter
      */
     self.filterItems = function(filter) {
-        self.itemsParent.classList.remove("sugarFilter")
-                                  .remove("saltFilter")
-                                  .add(filter+"Filter");
+        console.log(self.itemsParent);
+        self.itemsParent.classList.remove("sugarFilter");
+        self.itemsParent.classList.remove("saltFilter");
+        self.itemsParent.classList.add(filter+"Filter");
 
         self.itemsFilter = filter;
         self.selectItem(0);
@@ -115,9 +135,10 @@ function ProductsManager() {
      * @param button
      * @param filter
      */
-    self.addButtonFilter = function(button, filter) {
+    self.addButtonFilter = function(button, filter, callback) {
         button.addEventListener("click", function() {
             self.filterItems(filter);
+            callback();
         })
     }
 

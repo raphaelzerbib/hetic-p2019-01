@@ -14,6 +14,7 @@
 
 .produits__container {
     background-image: linear-gradient(-13deg, $brown 50%, $beige 50%);
+    @include transition(background, 0.5s, ease-out, 0s);
 }
 
 
@@ -78,20 +79,24 @@
 }
 
 
-.produits__gouts {
+.produits__filters {
     position: absolute;
-    bottom: 180px;
+    bottom: 150px;
     width: 100%;
     display: flex;
     justify-content: center;
 
-    .produits__gout{
-        width: 50%;
+    .produits__filter {
+        margin: 0 40px;
         text-align: center;
         font-weight: bold;
         color: white;
         opacity: 0.8;
         font-size: 22px;
+
+        &.active {
+            color: $darkBrown;
+        }
     }
 
 }
