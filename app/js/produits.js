@@ -1,3 +1,12 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var productsManager = new ProductsManager();
+    productsManager.itemsParent = document.querySelector(".produits__itemsContainer");
+    productsManager.viewsParent = document.querySelector(".produits");
+    productsManager.addButtonSelect(document.querySelector(".produits__button"), true, 1);
+    productsManager.init();
+})
+
+
 /**
  * ProductsManager
  * Gestion des animations, transitions de la page produits
@@ -9,31 +18,33 @@ function ProductsManager() {
     self.item = 0;
     self.view = 0;
 
-    self.itemsData = [];
+    self.itemsData = [{"type": "sugar", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "sugar", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "sugar", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "sugar", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "salt", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "salt", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "salt", "color": "#efddad", "colorDark":"#d3b47d"},
+        {"type": "salt", "color": "#efddad", "colorDark":"#d3b47d"}];
     self.itemsFilter = "sugar";
     self.itemsParent;
+    self.itemsIsAnimate = false;
 
     self.viewsParent;
 
-    self.startTouchY;
-    self.endTouchY;
+    self.startTouch = {x: 0, y: 0};
+    self.endTouch = {x: 0, y: 0};
 
     /**
      * getItemsData
-     * retourne les donnees des items filtrés 
+     * retourne les donnees des items filtrés
      *
      * @param filter
      */
     self.getItemsData = function(filter) {
-        var filterItemsData = [];
-
-        for (var itemData in self.itemsData) {
-            if(itemData.type == filter) {
-                filterItemsData.push(itemData);
-            }
-        }
-
-        return filterItemsData;
+        return self.itemsData.filter(function(itemData) {
+            return itemData.type == self.itemsFilter;
+        })
     }
 
     /**
@@ -43,15 +54,21 @@ function ProductsManager() {
      * @param view
      */
     self.selectItem = function(item) {
+        var itemsData = self.getItemsData(self.itemsFilter);
         /*
          * si item est different de l'item actuellement visible
          */
-        if(self.item != item) {
+        if(self.item != item && item < itemsData.length && item >= 0 && !self.itemsIsAnimate) {
+            self.itemsIsAnimate = true;
             /*
              * deplace la position du parent pour que la vue apparaisse dans le viewport
              */
             self.itemsParent.style.left = -(item * 100) + '%';
             self.item = item;
+
+            setTimeout(function() {
+                self.itemsIsAnimate = false;
+            }, 500)
         }
     }
 
@@ -87,6 +104,7 @@ function ProductsManager() {
                                   .add(filter+"Filter");
 
         self.itemsFilter = filter;
+        self.selectItem(0);
     }
 
     /**
@@ -132,16 +150,25 @@ function ProductsManager() {
         /**
          * event listener sur le scroll
          */
-        self.parent.addEventListener('mousewheel', function(e) {
-            var delta = e.deltaY;
+        window.addEventListener('mousewheel', function(e) {
+            var delta = {x: e.deltaX, y: e.deltaY};
             /**
              * si le vecteur position est assez grand
              */
-            if(Math.abs(delta) > 20) {
+            if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
+                if(self.view == 0) {
+                    /**
+                     * on change d'item
+                     */
+                    var item = self.item + (delta.x > 0 ? +1 : -1);
+                    self.selectItem(item);
+                }
+            }
+            else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
                 /**
                  * on change de vue
                  */
-                self.selectView(delta > 0 ? 1 : 0);
+                self.selectView(delta.y > 0 ? 1 : 0);
             }
 
             if(e.preventDefault) { e.preventDefault(); }
@@ -158,10 +185,10 @@ function ProductsManager() {
      */
     self.initMobile = function() {
         /*
-         * recupere et stock la position sur Y du premier touch dans startTouchY
+         * recupere et stock la position du premier touch dans startTouch
          */
         window.addEventListener('touchstart', function(e){
-            self.startTouchY = e.touches[0].clientY
+            self.startTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
 
@@ -169,10 +196,10 @@ function ProductsManager() {
         });
 
         /*
-         * recupere et stock la position sur Y du dernier touch dans endTouchY
+         * recupere et stock la position du dernier touch dans endTouch
          */
         window.addEventListener('touchmove', function(e){
-            self.endTouchY = e.touches[0].clientY;
+            self.endTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
 
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
@@ -185,22 +212,23 @@ function ProductsManager() {
             /*
              * calcul du vecteur position sur Y
              */
-            var delta = self.endTouchY - self.startTouchY;
+            var delta = {x: self.endTouch.x - self.startTouch.x, y: self.endTouch.y - self.endTouch.y};
 
-            /*
-             * stop les events de menuManager si c'est la vue 0
-             * (la vue 1 correspond au menu)
-             */
-            self.menuManager.running = (self.view == 0) ? false : true;
 
-            /*
-             * si le vecteur est assez grand
-             */
-            if(Math.abs(delta) > 20 && self.menuManager.activeItem == 0) {
-                /*
-                 * change de vue
+            if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
+                if(self.view == 0) {
+                    /**
+                     * on change d'item
+                     */
+                    var item = self.item + delta.x > 0 ? +1 : -1;
+                    self.selectItem(item);
+                }
+            }
+            else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
+                /**
+                 * on change de vue
                  */
-                self.selectView(delta < 0 ? 1 : 0);
+                self.selectItem(delta.y > 0 ? 1 : 0);
             }
 
             if(e.preventDefault) { e.preventDefault(); }

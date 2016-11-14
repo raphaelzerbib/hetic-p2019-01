@@ -19,30 +19,31 @@
 {% endblock %}
 
 {% block body %}
-<div class="produits__container">
-    <div class="produits__items">
-        <div class="produits__itemsContainer">
-            {% for item in items %}
-                {% include 'produits/item.twig' with {"item": item} %}
-            {% endfor %}
+<div class="produits">
+    <div class="produits__container">
+        <div class="produits__items">
+            <div class="produits__itemsContainer sugarFilter">
+                {% for item in items %}
+                    {% include 'produits/item.twig' with {"item": item} %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="produits__gouts">
+            <div class="produits__gout sale">
+                SALÉE
+            </div>
+            <div class="produits__gout sucre">
+                SUCRÉE
+            </div>
+        </div>
+        <div class="produits__button">
+            <h1>
+                PLUS D'INFORMATIONS
+            </h1>
+            <img src="../img/down_arrow_white.svg" alt=""/>
         </div>
     </div>
-    <div class="produits__gouts">
-        <div class="produits__gout sale">
-            SALÉE
-        </div>
-        <div class="produits__gout sucre">
-            SUCRÉE
-        </div>
-    </div>
-    <div class="produits__informations">
-        <h1>
-            PLUS D'INFORMATIONS
-        </h1>
-        <img src="../img/down_arrow_white.svg" alt=""/>
-    </div>
+    {% include 'produits/information.twig' %}
 </div>
-{% include 'produits/information.twig' %}
-
 
 {% endblock %}

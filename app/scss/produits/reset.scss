@@ -1,7 +1,18 @@
-.produits__container {
+.produits {
+    position: relative;
+    height: 200%;
+    top:0;
+    background-color: $brown;
+    @include transition(all, 0.5s, ease, 0s);
+}
+
+.produits__container, .produits__information {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 50%;
+}
+
+.produits__container {
     background-image: linear-gradient(-13deg, $brown 50%, $beige 50%);
 }
 
@@ -10,7 +21,7 @@
     position: relative;
     height: 100%;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .produits__itemsContainer {
@@ -19,6 +30,8 @@
     display: inline-block;
     white-space: nowrap;
     overflow: auto;
+    left:0;
+    @include transition(all, 0.5s, ease, 0s);
 }
 
 .produits__item {
@@ -37,6 +50,11 @@
     height: 100%;
     display: flex;
     justify-content: center;
+
+    &.sugarFilter .produits__item.salt,
+    &.saltFilter .produits__item.sugar {
+        display: none;
+    }
 }
 
 .produits__itemTitle {
@@ -80,7 +98,7 @@
 
 
 
-.produits__information{
+.produits__button {
     position: absolute;
     bottom: 0;
     width: 100%;
