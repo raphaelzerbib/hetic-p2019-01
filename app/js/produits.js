@@ -82,7 +82,7 @@ function ProductsManager() {
             self.itemsParent.style.left = -(item * 100) + '%';
             self.viewsParent.querySelector(".produits__container").style.backgroundImage = 'linear-gradient(-13deg, '+itemData.colorDark+' 50%, '+itemData.color+' 50%)';
             self.viewsParent.style.backgroundColor = itemData.colorDark;
-            console.log('ok');
+
             self.item = item;
 
             setTimeout(function() {
@@ -135,7 +135,9 @@ function ProductsManager() {
      * @param filter
      */
     self.addButtonFilter = function(button, filter, callback) {
-        var eventListenerCallback = function() {
+        var eventListenerCallback = function(e) {
+            e.stopPropagation();
+
             self.filterItems(filter);
             callback();
         };
@@ -154,7 +156,9 @@ function ProductsManager() {
      * @param id
      */
     self.addButtonSelect = function(button, isView, id) {
-        var eventListenerCallback = function() {
+        var eventListenerCallback = function(e) {
+            e.stopPropagation();
+
             if(isView) {
                 self.selectView(id);
             }
@@ -170,7 +174,7 @@ function ProductsManager() {
         /**
          * si le vecteur position est assez grand
          */
-        if(Math.abs(delta.x) > 50 && Math.abs(delta.x) > Math.abs(delta.y)) {
+        if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
             if(self.view == 0) {
                 /**
                  * on change d'item
@@ -179,7 +183,7 @@ function ProductsManager() {
                 self.selectItem(item);
             }
         }
-        else if(Math.abs(delta.y) > 50 && Math.abs(delta.y) > Math.abs(delta.x)) {
+        else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
             /**
              * on change de vue
              */
@@ -219,6 +223,7 @@ function ProductsManager() {
          */
         window.addEventListener('touchstart', function(e){
             self.startTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
 
@@ -243,7 +248,7 @@ function ProductsManager() {
              * calcul du vecteur position sur Y
              */
             var delta = {x: self.startTouch.x - self.endTouch.x, y: self.startTouch.y - self.endTouch.y};
-            
+
             self.detectGesture(delta);
 
             if(e.preventDefault) { e.preventDefault(); }
