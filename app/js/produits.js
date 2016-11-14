@@ -18,11 +18,17 @@ function ProductsManager() {
     self.startTouchY;
     self.endTouchY;
 
+    /**
+     * getItemsData
+     * retourne les donnees des items filtrés 
+     *
+     * @param filter
+     */
     self.getItemsData = function(filter) {
         var filterItemsData = [];
 
         for (var itemData in self.itemsData) {
-            if(itemData.type == "filter") {
+            if(itemData.type == filter) {
                 filterItemsData.push(itemData);
             }
         }
