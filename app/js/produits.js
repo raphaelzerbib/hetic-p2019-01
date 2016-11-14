@@ -1,6 +1,6 @@
 /**
  * ProductsManager
- * Gestion des animations, transitions de la page home
+ * Gestion des animations, transitions de la page produits
  *
  */
 function ProductsManager() {
@@ -8,15 +8,27 @@ function ProductsManager() {
 
     self.item = 0;
     self.view = 0;
-    self.data = [];
 
+    self.itemsData = [];
     self.itemsFilter = "sugar";
-
     self.itemsParent;
+
     self.viewsParent;
 
     self.startTouchY;
     self.endTouchY;
+
+    self.getItemsData = function(filter) {
+        var filterItemsData = [];
+
+        for (var itemData in self.itemsData) {
+            if(itemData.type == "filter") {
+                filterItemsData.push(itemData);
+            }
+        }
+
+        return filterItemsData;
+    }
 
     /**
      * selectItem
