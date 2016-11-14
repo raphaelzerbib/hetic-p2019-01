@@ -39,7 +39,7 @@
     justify-content: center;
 }
 
-.produits__item--title {
+.produits__itemTitle {
     color: white;
     font-size: 30px;
     opacity: 0.8;
@@ -49,7 +49,7 @@
 }
 
 
-.produits__item--img {
+.produits__itemImg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +80,7 @@
 
 
 
-.produits__informations{
+.produits__information{
     position: absolute;
     bottom: 0;
     width: 100%;
