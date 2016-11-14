@@ -122,7 +122,7 @@ function HomeManager() {
             /*
              * calcul du vecteur position sur Y
              */
-            var delta = self.endTouchY - self.startTouchY;
+            var delta = self.startTouchY - self.endTouchY;
 
             /*
              * stop les events de menuManager si c'est la vue 0
@@ -137,7 +137,7 @@ function HomeManager() {
                 /*
                  * change de vue
                  */
-                self.selectView(delta < 0 ? 1 : 0);
+                self.selectView(delta > 0 ? 1 : 0);
             }
 
             if(e.preventDefault) { e.preventDefault(); }
