@@ -1,6 +1,19 @@
 {# produits.twig #}
 {% extends "layout/layout.twig" %}
 
+
+{% set items = [{"name": "CHOCOLAT PRALINÉ", "image": "gauffre_abricot"},
+    {"name": "CRÈME DE VANILLE", "image": "gauffre_abricot"},
+    {"name": "CRÈME DE CITRON", "image": "gauffre_abricot"},
+    {"name": "CRÈME DE MARRONS", "image": "gauffre_abricot"},
+    {"name": "LA SAISONNIÈRE", "image": "gauffre_abricot"},
+    {"name": "LA CROQUE MONSIEUR", "image": "gauffre_abricot"},
+    {"name": "LA FISH", "image": "gauffre_abricot"},
+    {"name": "LA POULET THAÏ", "image": "gauffre_abricot"}]
+ %}
+
+
+
 {% block head %}
 <script defer src="js/produits.min.js"></script>
 {% endblock %}
@@ -8,14 +21,9 @@
 {% block body %}
 <div class="produits__container">
     <div class="produits__items">
-        <div class="produits__item">
-            <div class="produits__item--title">
-                <h2>LA CREME DE VANILLE</h2>
-            </div>
-            <div class="produits__item--img">
-                <img src="../img/gauffre_abricot.png" alt="">
-            </div>
-        </div>
+        {% for item in items %}
+            {% include 'produits/produits-item.twig' with {"item": item} %}
+        {% endfor %}
     </div>
     <div class="produits__gouts">
         <div class="produits__gout sale">
