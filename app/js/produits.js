@@ -10,6 +10,8 @@ function ProductsManager() {
     self.view = 0;
     self.data = [];
 
+    self.itemsFilter = "sugar";
+
     self.itemsParent;
     self.viewsParent;
 
@@ -55,12 +57,36 @@ function ProductsManager() {
     }
 
 
-    self.filterItems = function(isSugar) {
+    /**
+     * filterItems
+     * filtre les items
+     *
+     * @param filter
+     */
+    self.filterItems = function(filter) {
+        self.itemsParent.classList.remove("sugarFilter")
+                                  .remove("saltFilter")
+                                  .add(filter+"Filter");
 
+        self.itemsFilter = filter;
     }
 
     /**
-     * addButton
+     * addButtonFilter
+     * permet d'appliquer un filter sur les differents items
+     * sur le button renseigné en param
+     *
+     * @param button
+     * @param filter
+     */
+    self.addButtonFilter = function(button, filter) {
+        button.addEventListener("click", function() {
+            self.filterItems(filter);
+        })
+    }
+
+    /**
+     * addButtonSelect
      * permet de changer de vue/item en cliquant
      * sur le button renseigné en param
      *
@@ -68,9 +94,9 @@ function ProductsManager() {
      * @param isView
      * @param id
      */
-    self.addButton = function(button, isView, id) {
+    self.addButtonSelect = function(button, isView, id) {
         button.addEventListener("click", function() {
-            if(view) {
+            if(isView) {
                 self.selectView(id);
             }
             else {
