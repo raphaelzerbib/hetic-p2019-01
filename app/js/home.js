@@ -52,10 +52,13 @@ function HomeManager() {
      * @param view
      */
     self.addButton = function(button, view) {
-        button.addEventListener("click", function() {
+        var eventListenerCallback = function() {
             self.height = window.innerHeight;
             self.selectView(view);
-        })
+        }
+
+        button.addEventListener("click", eventListenerCallback);
+        button.addEventListener("touchstart", eventListenerCallback);
     }
 
     /**
