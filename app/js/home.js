@@ -17,7 +17,6 @@ function HomeManager() {
     self.view = 0;
 
     self.parent;
-    self.height;
 
     self.startTouchY;
     self.endTouchY;
@@ -55,7 +54,6 @@ function HomeManager() {
         var eventListenerCallback = function(e) {
             e.stopPropagation();
 
-            self.height = window.innerHeight;
             self.selectView(view);
         }
 
@@ -73,7 +71,6 @@ function HomeManager() {
          * event listener sur le scroll
          */
         self.parent.addEventListener('mousewheel', function(e) {
-            self.height = window.innerHeight;
             var delta = e.deltaY;
             /**
              * si le vecteur position est assez grand
@@ -122,8 +119,6 @@ function HomeManager() {
         });
 
         window.addEventListener('touchend', function(e) {
-            self.height = window.innerHeight;
-
             /*
              * calcul du vecteur position sur Y
              */
