@@ -87,7 +87,7 @@ function ProductsManager() {
 
             setTimeout(function() {
                 self.itemsIsAnimate = false;
-            }, 500)
+            }, 1000)
         }
     }
 
@@ -204,7 +204,7 @@ function ProductsManager() {
             var delta = {x: e.deltaX, y: e.deltaY};
 
             self.detectGesture(delta);
-
+            console.log(self.itemsIsAnimate);
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
 
