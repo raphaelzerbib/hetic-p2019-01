@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var productsManager = new ProductsManager();
     productsManager.itemsParent = document.querySelector(".produits__itemsContainer");
-    productsManager.viewsParent = document.querySelector(".produits");
+    productsManager.viewsParent = document.querySelector(".produits__scroll");
     productsManager.addButtonSelect(document.querySelector(".produits__button"), true, 1);
     productsManager.addButtonFilter(document.querySelector(".produits__filter.salt"), "salt", function() {
         var filters = document.querySelectorAll(".produits__filter");
