@@ -15,7 +15,7 @@
     height: 60px;
     width: 100%;
 
-    .menu__links--link {
+    .menu__linksLink {
         display: inline-block;
         margin: 0 10px;
     }
@@ -26,7 +26,7 @@
 .menu__item {
     width: 100%;
     padding: 20px 0;
-    .menu__item--title {
+    .menu__itemTitle {
         font-size: 20px;
         color:white;
         opacity: 0.5;
@@ -34,7 +34,7 @@
         @include transition(all, 0.5s, ease, 0s);
     }
 
-    .menu__item--content {
+    .menu__itemContent {
         position: relative;
         height: 0;
         padding: 0;
@@ -49,58 +49,62 @@
 
     }
 
-    .menu__item--info {
+    .menu__itemInfo {
         color: $orange;
         font-size: 20px;
+        cursor: pointer;
+
+        a {
+            text-decoration: none;
+        }
     }
 }
 
-.menu__item.active {
-    .menu__item--title {
+.menu__item.menu__item--active {
+    .menu__itemTitle {
         font-size: 24px;
-        color: $black;
+        color: $orange;
         opacity: 1;
     }
 
-    .menu__item--content {
+    .menu__itemContent {
         height: 120px;
         padding-top: 20px;
         opacity: 1;
-        &.contact {
+        &.menu__itemContent--contact,
+        &.menu__itemContent--social {
             height: 200px;
         }
     }
 }
 
-.menu__item--content {
-    &.produits {
+.menu__itemContent {
+    &.menu__itemContent--produits {
         p {
-            color: $black;
+            color: white;
             font-size: 40px;
         }
         img {
             position: absolute;
             top: 20px;
-            margin-left: -50px;
+            margin-left: -30px;
         }
     }
 
-    &.valeurs {
-        color: white;
-        font-size: 40px;
-
-        b {
-            color: $black;
+    &.menu__itemContent--social {
+        img {
+            height: 140px;
+            margin-bottom: 10px;
         }
     }
 
-    &.histoire {
+    &.menu__itemContent--papa {
         img {
             height: 80px;
         }
     }
 
-    &.contact {
+    &.menu__itemContent--contact {
         color: white;
         font-size: 24px;
 
@@ -126,9 +130,9 @@
             background-color: white;
             border: 0;
             width: 20%;
+            margin-left: 40%;
             opacity: 0.5;
             height: 2px;
-            margin-left: 40%;
         }
     }
 }

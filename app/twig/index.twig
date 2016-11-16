@@ -6,22 +6,24 @@
 {% endblock %}
 
 {% block body %}
+{% include 'preload/preload.twig' %}
+
 <div class="home">
-    <div class="home__container">
-        <div class="home__container--img">
-            <img src="../img/gauffre_abricot.png" alt="" />
+    <div class="home__scroll">
+        <div class="home__container">
+            <div class="home__container--img">
+                <img src="../img/gauffre_abricot.png" alt="" />
+            </div>
+            <div class="home__container--bottom">
+                <p>
+                    CROQUEZ MOI
+                </p>
+                <img src="../img/down_arrow_white.svg" alt=""/>
+            </div>
         </div>
-        <div class="home__container--bottom">
-            <p>
-                DECOUVRIR
-                <br/>
-                NOTRE CONCEPT
-            </p>
-            <img src="../img/down_arrow_white.svg" alt=""/>
+        <div class="home__menu">
+            {% include 'menu/menu.twig' %}
         </div>
-    </div>
-    <div class="home__menu">
-        {% include 'menu/menu.twig' %}
     </div>
 </div>
 

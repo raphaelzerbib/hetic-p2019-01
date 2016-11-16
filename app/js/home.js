@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var homeManager = new HomeManager();
-    homeManager.parent = document.querySelector(".home");
+    homeManager.parent = document.querySelector(".home__scroll");
     homeManager.addButton(document.querySelector(".home__container--bottom"), 1);
     homeManager.init();
 })
@@ -17,7 +17,6 @@ function HomeManager() {
     self.view = 0;
 
     self.parent;
-    self.height;
 
     self.startTouchY;
     self.endTouchY;
@@ -52,10 +51,14 @@ function HomeManager() {
      * @param view
      */
     self.addButton = function(button, view) {
-        button.addEventListener("click", function() {
-            self.height = window.innerHeight;
+        var eventListenerCallback = function(e) {
+            e.stopPropagation();
+
             self.selectView(view);
-        })
+        }
+
+        button.addEventListener("click", eventListenerCallback);
+        button.addEventListener("touchstart", eventListenerCallback);
     }
 
     /**
@@ -68,7 +71,6 @@ function HomeManager() {
          * event listener sur le scroll
          */
         self.parent.addEventListener('mousewheel', function(e) {
-            self.height = window.innerHeight;
             var delta = e.deltaY;
             /**
              * si le vecteur position est assez grand
@@ -117,12 +119,10 @@ function HomeManager() {
         });
 
         window.addEventListener('touchend', function(e) {
-            self.height = window.innerHeight;
-
             /*
              * calcul du vecteur position sur Y
              */
-            var delta = self.endTouchY - self.startTouchY;
+            var delta = self.startTouchY - self.endTouchY;
 
             /*
              * stop les events de menuManager si c'est la vue 0
@@ -137,7 +137,7 @@ function HomeManager() {
                 /*
                  * change de vue
                  */
-                self.selectView(delta < 0 ? 1 : 0);
+                self.selectView(delta > 0 ? 1 : 0);
             }
 
             if(e.preventDefault) { e.preventDefault(); }
