@@ -1,6 +1,6 @@
 .produits {
     height: 100%;
-    background-color: $brown;
+    background-color: $darkBeige;
     overflow: hidden;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .produits__container {
-    background-image: linear-gradient(-13deg, $brown 50%, $beige 50%);
+    background-image: linear-gradient(-13deg, $darkBeige 50%, $beige 50%);
     @include transition(background, 0.5s, ease-out, 0s);
 }
 
