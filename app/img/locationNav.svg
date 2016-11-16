@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="21px" height="30px" viewBox="0 0 21 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="29px" height="35px" viewBox="0 0 29 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 19</title>
+    <title>Group Copy 3</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Welcome-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="GAUFFRE_SALÉE" transform="translate(-27.000000, -17.000000)" fill="#FFFFFF">
-            <g id="Group-19" transform="translate(27.000000, 17.000000)">
-                <path d="M20.0582223,13.8732981 C20.0976254,13.8460637 20.1084776,13.9171333 19.5,15 C17.1453924,19.1903372 11.5157224,28.4101267 11.5157224,28.4101267 C10.9433731,29.3514952 10.0143796,29.3569476 9.44588773,28.4157421 C9.44588773,28.4157421 3.82570071,19.1388935 1.5,15 C1.44563486,14.90325 1.39603535,14.8143721 1.35080979,14.7327494 C0.490837168,13.2989187 -3.55271368e-15,11.6422358 -3.55271368e-15,9.87745548 C-3.55271368e-15,4.42228745 4.68999527,0 10.4753976,0 C16.2608,0 20.9507953,4.42228745 20.9507953,9.87745548 C20.9507953,11.2996209 20.6320408,12.6515868 20.0582223,13.8732981 Z M10.5,13.480479 C12.63647,13.480479 14.3684211,11.7677258 14.3684211,9.65493769 C14.3684211,7.54214955 12.63647,5.82939634 10.5,5.82939634 C8.36353005,5.82939634 6.63157895,7.54214955 6.63157895,9.65493769 C6.63157895,11.7677258 8.36353005,13.480479 10.5,13.480479 Z" id="Combined-Shape"></path>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="GAUFFRE_SALÉE-Copy" transform="translate(-27.000000, -18.000000)">
+            <g id="Group-Copy-3" transform="translate(44.975371, 35.958393) scale(-1, 1) rotate(228.000000) translate(-44.975371, -35.958393) translate(32.975371, 19.458393)">
+                <ellipse id="Oval-2-Copy-2" stroke="#5F3A34" stroke-width="5" transform="translate(12.016475, 21.761377) scale(1, -1) translate(-12.016475, -21.761377) " cx="12.016475" cy="21.7613765" rx="11.5003459" ry="11.1927491"></ellipse>
+                <ellipse id="Oval-2-Copy-3" fill="#5F3A34" transform="translate(7.211950, 6.811178) scale(1, -1) translate(-7.211950, -6.811178) " cx="7.21195047" cy="6.81117785" rx="6.60205044" ry="6.42546706"></ellipse>
             </g>
         </g>
     </g>
