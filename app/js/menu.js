@@ -40,13 +40,13 @@ function MenuManager() {
         var items = self.parent.querySelectorAll('.menu__item');
 
         for (var i = 0; i < items.length; i++) {
-            items[i].classList.remove("active");
+            items[i].classList.remove("menu__item--active");
         }
 
         /*
          * ajout de la class active à l'item donné en param
          */
-        item.classList.add("active");
+        item.classList.add("menu__item--active");
 
         /*
          * recupere l'index du nouveau item actif
