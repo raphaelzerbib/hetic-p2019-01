@@ -100,7 +100,7 @@
         opacity: 0.8;
         font-size: 22px;
         cursor: pointer;
-        
+
         &.active {
             color: $darkBrown;
         }
@@ -116,6 +116,7 @@
     width: 100%;
     text-align: center;
     display: block;
+    cursor: pointer;
 
     h1 {
         color: white;
