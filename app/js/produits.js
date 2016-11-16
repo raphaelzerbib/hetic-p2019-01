@@ -223,6 +223,7 @@ function ProductsManager() {
          */
         window.addEventListener('touchstart', function(e){
             self.startTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+            self.endTouch = {x: e.touches[0].clientX, y: e.touches[0].clientY};
 
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;

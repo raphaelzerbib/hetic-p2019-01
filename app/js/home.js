@@ -99,7 +99,8 @@ function HomeManager() {
          * recupere et stock la position sur Y du premier touch dans startTouchY
          */
         window.addEventListener('touchstart', function(e){
-            self.startTouchY = e.touches[0].clientY
+            self.startTouchY = e.touches[0].clientY;
+            self.endTouchY = e.touches[0].clientY;
             if(e.preventDefault) { e.preventDefault(); }
             e.returnValue = false;
 
