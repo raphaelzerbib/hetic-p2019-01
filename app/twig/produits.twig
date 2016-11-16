@@ -1,0 +1,46 @@
+{# produits.twig #}
+{% extends "layout/layout.twig" %}
+
+
+{% set items = [{"name": "CHOCOLAT PRALINÉ", "image": "gauffre_abricot"},
+    {"name": "CRÈME DE VANILLE", "image": "gauffre_abricot"},
+    {"name": "CRÈME DE CITRON", "image": "gauffre_abricot"},
+    {"name": "CRÈME DE MARRONS", "image": "gauffre_abricot"},
+    {"name": "LA SAISONNIÈRE", "image": "gauffre_abricot"},
+    {"name": "LA CROQUE MONSIEUR", "image": "gauffre_abricot"},
+    {"name": "LA FISH", "image": "gauffre_abricot"},
+    {"name": "LA POULET THAÏ", "image": "gauffre_abricot"}]
+ %}
+
+
+
+{% block head %}
+<script defer src="js/produits.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="produits__container">
+    <div class="produits__items">
+        {% for item in items %}
+            {% include 'produits/produits-item.twig' with {"item": item} %}
+        {% endfor %}
+    </div>
+    <div class="produits__gouts">
+        <div class="produits__gout sale">
+            SALÉE
+        </div>
+        <div class="produits__gout sucre">
+            SUCRÉE
+        </div>
+    </div>
+    <div class="produits__informations">
+        <h1>
+            PLUS D'INFORMATIONS
+        </h1>
+        <img src="../img/down_arrow_white.svg" alt=""/>
+    </div>
+</div>
+{% include 'produits/informations.twig' %}
+
+
+{% endblock %}
