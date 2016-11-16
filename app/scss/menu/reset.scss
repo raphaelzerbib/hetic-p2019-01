@@ -58,7 +58,7 @@
 .menu__item.menu__item--active {
     .menu__itemTitle {
         font-size: 24px;
-        color: $black;
+        color: $orange;
         opacity: 1;
     }
 
@@ -66,7 +66,8 @@
         height: 120px;
         padding-top: 20px;
         opacity: 1;
-        &.menu__itemContent--contact {
+        &.menu__itemContent--contact,
+        &.menu__itemContent--social {
             height: 200px;
         }
     }
@@ -75,26 +76,24 @@
 .menu__itemContent {
     &.menu__itemContent--produits {
         p {
-            color: $black;
+            color: white;
             font-size: 40px;
         }
         img {
             position: absolute;
             top: 20px;
-            margin-left: -50px;
+            margin-left: -30px;
         }
     }
 
-    &.menu__itemContent--valeurs {
-        color: white;
-        font-size: 40px;
-
-        b {
-            color: $black;
+    &.menu__itemContent--social {
+        img {
+            height: 140px;
+            margin-bottom: 10px;
         }
     }
 
-    &.menu__itemContent--histoire {
+    &.menu__itemContent--papa {
         img {
             height: 80px;
         }
