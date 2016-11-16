@@ -2,14 +2,14 @@
 {% extends "layout/layout.twig" %}
 
 
-{% set items = [{"name": "CHOCOLAT PRALINÉ", "image": "gauffre_abricot"},
-    {"name": "CRÈME DE VANILLE", "image": "gauffre_abricot"},
-    {"name": "CRÈME DE CITRON", "image": "gauffre_abricot"},
-    {"name": "CRÈME DE MARRONS", "image": "gauffre_abricot"},
-    {"name": "LA SAISONNIÈRE", "image": "gauffre_abricot"},
-    {"name": "LA CROQUE MONSIEUR", "image": "gauffre_abricot"},
-    {"name": "LA FISH", "image": "gauffre_abricot"},
-    {"name": "LA POULET THAÏ", "image": "gauffre_abricot"}]
+{% set items = [{"name": "CHOCOLAT PRALINÉ", "image": "gauffre_abricot", "type": "sugar"},
+    {"name": "CRÈME DE VANILLE", "image": "gauffre_abricot", "type": "sugar"},
+    {"name": "CRÈME DE CITRON", "image": "gauffre_abricot", "type": "sugar"},
+    {"name": "CRÈME DE MARRONS", "image": "gauffre_abricot", "type": "sugar"},
+    {"name": "LA SAISONNIÈRE", "image": "gauffre_abricot", "type": "salt"},
+    {"name": "LA CROQUE MONSIEUR", "image": "gauffre_abricot", "type": "salt"},
+    {"name": "LA FISH", "image": "gauffre_abricot", "type": "salt"},
+    {"name": "LA POULET THAÏ", "image": "gauffre_abricot", "type": "salt"}]
  %}
 
 
@@ -19,28 +19,33 @@
 {% endblock %}
 
 {% block body %}
-<div class="produits__container">
-    <div class="produits__items">
-        {% for item in items %}
-            {% include 'produits/produits-item.twig' with {"item": item} %}
-        {% endfor %}
-    </div>
-    <div class="produits__gouts">
-        <div class="produits__gout sale">
-            SALÉE
+<div class="produits">
+    <div class="produits__scroll">
+        <div class="produits__container">
+            <div class="produits__items">
+                <div class="produits__itemsContainer sugarFilter">
+                    {% for item in items %}
+                        {% include 'produits/item.twig' with {"item": item} %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="produits__filters">
+                <div class="produits__filter salt">
+                    SALÉE
+                </div>
+                <div class="produits__filter sugar active">
+                    SUCRÉE
+                </div>
+            </div>
+            <div class="produits__button">
+                <h1>
+                    PLUS D'INFORMATIONS
+                </h1>
+                <img src="../img/down_arrow_white.svg" alt=""/>
+            </div>
         </div>
-        <div class="produits__gout sucre">
-            SUCRÉE
-        </div>
-    </div>
-    <div class="produits__informations">
-        <h1>
-            PLUS D'INFORMATIONS
-        </h1>
-        <img src="../img/down_arrow_white.svg" alt=""/>
+        {% include 'produits/information.twig' %}
     </div>
 </div>
-{% include 'produits/informations.twig' %}
-
 
 {% endblock %}
