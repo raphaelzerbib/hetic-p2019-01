@@ -1,0 +1,47 @@
+.preload__container{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: $preload;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.preload__container article{
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.preload__container article p {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    font-style: italic;
+}
+
+.preload__containerImg{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    top: 0;
+}
+
+.preload__containerLogo{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.home{
+    display: none;
+}
