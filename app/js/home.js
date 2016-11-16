@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var homeManager = new HomeManager();
-    homeManager.parent = document.querySelector(".home");
+    homeManager.parent = document.querySelector(".home__scroll");
     homeManager.addButton(document.querySelector(".home__container--bottom"), 1);
     homeManager.init();
 })
