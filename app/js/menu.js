@@ -115,7 +115,7 @@ function MenuManager() {
             /*
              * si le vecteur est assez grand
              */
-            if(Math.abs(delta) > 20 && self.running) {
+            if(Math.abs(delta) > 50 && self.running) {
                 var position = delta < 0 ? 1 : -1;
                 /*
                  * recupere l'item id correspondant au swipe

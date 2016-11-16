@@ -174,7 +174,7 @@ function ProductsManager() {
         /**
          * si le vecteur position est assez grand
          */
-        if(Math.abs(delta.x) > 20 && Math.abs(delta.x) > Math.abs(delta.y)) {
+        if(Math.abs(delta.x) > 50 && Math.abs(delta.x) > Math.abs(delta.y)) {
             if(self.view == 0) {
                 /**
                  * on change d'item
@@ -183,7 +183,7 @@ function ProductsManager() {
                 self.selectItem(item);
             }
         }
-        else if(Math.abs(delta.y) > 20 && Math.abs(delta.y) > Math.abs(delta.x)) {
+        else if(Math.abs(delta.y) > 50 && Math.abs(delta.y) > Math.abs(delta.x)) {
             /**
              * on change de vue
              */

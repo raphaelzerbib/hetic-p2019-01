@@ -75,7 +75,7 @@ function HomeManager() {
             /**
              * si le vecteur position est assez grand
              */
-            if(Math.abs(delta) > 20) {
+            if(Math.abs(delta) > 50) {
                 /**
                  * on change de vue
                  */
@@ -133,7 +133,7 @@ function HomeManager() {
             /*
              * si le vecteur est assez grand
              */
-            if(Math.abs(delta) > 20 && self.menuManager.activeItem == 0) {
+            if(Math.abs(delta) > 50 && self.menuManager.activeItem == 0) {
                 /*
                  * change de vue
                  */
