@@ -1,10 +1,10 @@
 .social {
     height: 100%;
-    background-color: $peach;
+    background-color: $brown;
 }
 
 .social__container {
-    background-image: linear-gradient(-13deg, $bottom_social 50%, $top_social 50%);
+    background-image: linear-gradient(-13deg, $darkBrown 50%, $brown 50%);
     text-align: center;
     display: flex;
     justify-content: center;
