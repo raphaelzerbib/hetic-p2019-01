@@ -20,11 +20,11 @@
     flex-direction: column;
     height: 100%;
 
-    &.story__container--first {
+    &.story__containerFirst {
         background-image: linear-gradient(-13deg, $brown 50%, $darkBrown 50%);
     }
 
-    .story__containerMore {
+    .story__more {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -38,7 +38,7 @@
     }
 
 
-    .story__containerTitle {
+    .story__title {
         font-weight: bold;
         font-size: 26px;
         color: white;
@@ -51,7 +51,7 @@
 
 
 
-.story__containerArticle {
+.story__article {
     width: 80%;
     text-align: center;
     display: flex;
@@ -65,11 +65,11 @@
         margin-bottom: 50px;
     }
 
-   .story__containerArticle--title{
+   .story__articleTitle{
        color: white;
    }
 
-    .story__containerArticle__block{
+    .story__articleImg {
         height: 140px;
         margin-bottom: 50px;
         max-width: 400px;
