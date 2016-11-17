@@ -3,19 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     productsManager.itemsParent = document.querySelector(".produits__itemsContainer");
     productsManager.viewsParent = document.querySelector(".produits__scroll");
     productsManager.addButtonSelect(document.querySelector(".produits__button"), true, 1);
-    productsManager.addButtonFilter(document.querySelector(".produits__filter.salt"), "salt", function() {
+    productsManager.addButtonFilter(document.querySelector(".produits__filter--salt"), "salt", function() {
         var filters = document.querySelectorAll(".produits__filter");
         [].forEach.call(filters, function(filter) {
             filter.style.color = "white";
         });
-        document.querySelector(".produits__filter.salt").style.color = "#5B3E26";
+        document.querySelector(".produits__filter--salt").style.color = "#5B3E26";
     })
-    productsManager.addButtonFilter(document.querySelector(".produits__filter.sugar"), "sugar", function() {
+    productsManager.addButtonFilter(document.querySelector(".produits__filter--sugar"), "sugar", function() {
         var filters = document.querySelectorAll(".produits__filter");
         [].forEach.call(filters, function(filter) {
             filter.style.color = "white";
         });
-        document.querySelector(".produits__filter.sugar").style.color = "#5B3E26";
+        document.querySelector(".produits__filter--sugar").style.color = "#5B3E26";
     })
 
     productsManager.init();
